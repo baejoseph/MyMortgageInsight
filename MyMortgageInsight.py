@@ -98,3 +98,5 @@ new_term = number_years(Remaining-repayment,new_monthly_payment,new_interest)
 
 if repayment > 0:
     st.subheader(f'If you repay extra £{round(repayment):,} now, you will pay £{round(value):,} less over {new_term} years at {new_interest}% interest.')
+    
+st.write("Copyright 2022 Joseph Bae")
