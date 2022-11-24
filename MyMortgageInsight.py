@@ -1,10 +1,5 @@
 import numpy as np
 import pandas as pd
-import math
-import matplotlib.pyplot as plt
-import ipywidgets as widgets
-from ipywidgets import interactive, HBox, Label
-from IPython.display import display
 import streamlit as st
 
 
