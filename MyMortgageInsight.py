@@ -61,9 +61,7 @@ def early_repayment_value(PV,ER, current_monthly_payment,interest):
 st.title("My Mortgage Insight")
 
 
-st.header("My Current Mortgage")
-
-st.write("Tell us about your current Mortgage:")
+st.header("Tell us about your current Mortgage:")
 
 
 current_monthly_payment = st.slider('How much are you paying every month?', 100, 3000, 1257, format="£%d")
@@ -91,12 +89,12 @@ if new_interest > current_interest:
 
 st.header("Value of My Early Repayments")
 
-repayment = st.slider('How much extra are you willing to pay today?', 0,3000,0, format="£%d")
+repayment = st.slider('How much extra are you willing to pay today?', 0,30000,0, format="£%d")
 
 value = early_repayment_value(Remaining,repayment, new_monthly_payment,new_interest)
 new_term = number_years(Remaining-repayment,new_monthly_payment,new_interest)
 
 if repayment > 0:
-    st.subheader(f'If you repay extra £{round(repayment):,} now, you will pay £{round(value):,} less over {new_term} years at {new_interest}% interest.')
+    st.subheader(f'If you repay an extra £{round(repayment):,} now, you will pay £{round(value):,} less over {new_term} years at {new_interest}% interest.')
     
 st.write("Copyright 2022 Joseph Bae")
