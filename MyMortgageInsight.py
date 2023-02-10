@@ -59,7 +59,7 @@ st.title("My Mortgage Insight")
 
 st.header("Tell us about your current Mortgage:")
 
-current_monthly_payment = st.slider('How much are you paying every month?', 300, 6000, 2023,10, format="£%d")
+current_monthly_payment = st.slider('How much are you paying every month?', 300, 6000, 2020,10, format="£%d")
 years = st.slider('How many years do you have left on your mortgage?', 7, 35, 21, format="%d years")
 current_interest = st.slider('What interest rate are you on now?', 0.5, 9.0, 1.9,0.1, format="%f%%")
 
@@ -72,7 +72,7 @@ st.header("My Future Mortgage")
 
 new_interest = st.slider('What new interest rate are you considering?', 0.1, 9.0, current_interest,0.1, format="%f%%")
 
-extension = st.slider('Are you thinking of extending the term at all?', 0, 10, 0, format="%d years")
+extension = st.slider('Are you thinking of extending the term at all?', 0, 15, 0, format="%d years")
 extension_text = ""
 if extension > 0: extension_text = f" and extending the term by {extension} years,"
 
