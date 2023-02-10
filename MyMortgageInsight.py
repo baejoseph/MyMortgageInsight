@@ -74,14 +74,14 @@ st.header("My Future Mortgage")
 new_interest = st.slider('What new interest rate are you considering?', 0.1, 9.0, current_interest,0.1, format="%f%%")
 
 extension = st.slider('Are you thinking of extending the term at all?', 0, 15, 0, format="%d years")
-extension_text = ""
+extension_text,repayment_text = "",""
 if extension > 0: extension_text = f" and extending the term by {extension} years,"
 if repayment > 0: repayment_text = f" and after making a single repayment of £{repayment:,} today,"
 new_term = years+extension
     
-new_monthly_payment = monthly_payment(Remaining - repayment, new_interest,years+extension)
+new_monthly_payment = monthly_payment(Remaining, new_interest,years+extension)
 
-st.subheader(f"With a new interest rate of {new_interest}%,{extension_text}{repayment_text} your new monthly payment will be £{round(new_monthly_payment):,} over {years+extension} years.")
+st.subheader(f"With a new interest rate of {new_interest}%,{extension_text}{repayment_text} your new monthly payment will be £{round(new_monthly_payment):,} over {new_term} years.")
 
 if (new_interest > current_interest) or (extension > 0):
     if new_monthly_payment > current_monthly_payment: 
