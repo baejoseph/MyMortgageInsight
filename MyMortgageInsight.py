@@ -64,6 +64,7 @@ years = st.slider('How many years do you have left on your mortgage?', 7, 35, 21
 current_interest = st.slider('What interest rate are you on now?', 0.5, 9.0, 1.9,0.1, format="%f%%")
 
 Remaining = PV_implicit(current_monthly_payment, current_interest,years)
+repayment = 0
 
 st.subheader(f"You are currently paying £{round(current_monthly_payment):,} at {current_interest}% interest over {years} years.")
 st.subheader(f"Based on what you have told us, you still have £{round(Remaining):,} to pay over {years} years.")
@@ -75,10 +76,12 @@ new_interest = st.slider('What new interest rate are you considering?', 0.1, 9.0
 extension = st.slider('Are you thinking of extending the term at all?', 0, 15, 0, format="%d years")
 extension_text = ""
 if extension > 0: extension_text = f" and extending the term by {extension} years,"
+if repayment > 0: repayment_text = f" and after making a single repayment of £{repayment:,} today,"
+if repayment = 0: new_term = years+extension
+    
+new_monthly_payment = monthly_payment(Remaining - repayment, new_interest,years+extension)
 
-new_monthly_payment = monthly_payment(Remaining, new_interest,years+extension)
-
-st.subheader(f"With a new interest rate of {new_interest}%,{extension_text} your new monthly payment will be £{round(new_monthly_payment):,} over {years+extension} years.")
+st.subheader(f"With a new interest rate of {new_interest}%,{extension_text}{repayment_text} your new monthly payment will be £{round(new_monthly_payment):,} over {new_term} years.")
 
 if (new_interest > current_interest) or (extension > 0):
     if new_monthly_payment > current_monthly_payment: 
