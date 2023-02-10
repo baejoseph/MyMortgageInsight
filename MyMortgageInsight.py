@@ -99,9 +99,11 @@ value = early_repayment_value(Remaining,repayment, new_monthly_payment,new_inter
 new_term = number_years(Remaining-repayment,new_monthly_payment,new_interest)
 years_delta, months_delta = divmod(years+extension-new_term*12, 12)
 years_delta_text, months_delta_text = "",""
-if years_delta > 0: years_delta_text = f"round(years_delta) year"
+if years_delta > 0: 
+    years_delta_text = f"round(years_delta) year"
     if years_delta > 1: years_delta_text += "s" 
-if months_delta > 0: months_delta_text = f"round(months_delta) month"
+if months_delta > 0: 
+    months_delta_text = f"round(months_delta) month"
     if months_delta > 1: months_delta_text += "s"
 if (months_delta > 0) and (years_delta > 0): years_delta_text += " and "
 
