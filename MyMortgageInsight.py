@@ -81,7 +81,7 @@ new_term = years+extension
     
 new_monthly_payment = monthly_payment(Remaining - repayment, new_interest,years+extension)
 
-st.subheader(f"With a new interest rate of {new_interest}%,{extension_text}{repayment_text} your new monthly payment will be £{round(new_monthly_payment):,} over {new_term} years.")
+st.subheader(f"With a new interest rate of {new_interest}%,{extension_text}{repayment_text} your new monthly payment will be £{round(new_monthly_payment):,} over {years+extension} years.")
 
 if (new_interest > current_interest) or (extension > 0):
     if new_monthly_payment > current_monthly_payment: 
