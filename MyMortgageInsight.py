@@ -97,12 +97,19 @@ repayment = st.slider('How much extra are you willing to pay today?', 0,round(Re
 # value of repayment if reducing terms
 value = early_repayment_value(Remaining,repayment, new_monthly_payment,new_interest)
 new_term = number_years(Remaining-repayment,new_monthly_payment,new_interest)
+years_delta, months_delta = divmod(years+extension-new_term*12, 12)
+years_delta_text, months_delta_text = "",""
+if years_delta > 0: years_delta_text = f"round(years_delta) year"
+    if years_delta > 1: years_delta_text += "s" 
+if months_delta > 0: months_delta_text = f"round(months_delta) month"
+    if months_delta > 1: months_delta_text += "s"
+if (months_delta > 0) and (years_delta > 0): years_delta_text += " and "
 
 # value of repayment if reducing monthly payment
 updated_monthly_payment = monthly_payment(Remaining - repayment, new_interest,years+extension)
 value2 = (new_monthly_payment- updated_monthly_payment)*12*(years+extension)
 
 if repayment > 0:
-    st.subheader(f'If you repay an extra £{round(repayment):,} now, you will either shorten the term by {round(years+extension-new_term,1)} and pay £{round(value):,} less over {new_term} years at {new_interest}% interest; or reduce monthly payment by £{round(new_monthly_payment- updated_monthly_payment,0)} and pay £{round(value2):,} less over {years+extension} years at {new_interest}% interest.')
+    st.subheader(f'If you repay an extra £{round(repayment):,} now, you will either shorten the term by {years_delta_text}{months_delta_text} and pay £{round(value):,} less over {new_term} years at {new_interest}% interest; or reduce monthly payment by £{round(new_monthly_payment- updated_monthly_payment,0)} and pay £{round(value2):,} less over {years+extension} years at {new_interest}% interest.')
     
 st.write("Copyright © 2023 Joseph Bae")
