@@ -112,6 +112,6 @@ updated_monthly_payment = monthly_payment(Remaining - repayment, new_interest,ye
 value2 = (new_monthly_payment- updated_monthly_payment)*12*(years+extension)
 
 if repayment > 0:
-    st.subheader(f'If you repay an extra £{round(repayment):,} now, you will either shorten the term by {years_delta_text}{months_delta_text} and pay £{round(value):,} less over {new_term} years at {new_interest}% interest; or reduce monthly payment by £{round(new_monthly_payment- updated_monthly_payment,0)} and pay £{round(value2):,} less over {years+extension} years at {new_interest}% interest.')
+    st.subheader(f'If you repay an extra £{round(repayment):,} now, you can either shorten the term by {years_delta_text}{months_delta_text} and pay £{round(value):,} less over {new_term} years at {new_interest}% interest; or reduce monthly payment by £{round(new_monthly_payment- updated_monthly_payment)} and pay £{round(value2):,} less over {years+extension} years at {new_interest}% interest.')
     
 st.write("Copyright © 2023 Joseph Bae")
