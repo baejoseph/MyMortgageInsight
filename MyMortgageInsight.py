@@ -76,9 +76,8 @@ new_interest = st.slider('What new interest rate are you considering?', 0.1, 9.0
 extension = st.slider('Are you thinking of extending the term at all?', 0, 15, 0, format="%d years")
 extension_text,repayment_text = "",""
 if extension > 0: extension_text = f" and extending the term by {extension} years,"
-if repayment > 0: repayment_text = f" and after making a single repayment of £{repayment:,} today,"
-new_term = years+extension
-    
+
+new_term = years+extension   
 new_monthly_payment = monthly_payment(Remaining, new_interest,years+extension)
 
 st.subheader(f"With a new interest rate of {new_interest}%,{extension_text}{repayment_text} your new monthly payment will be £{round(new_monthly_payment):,} over {new_term} years.")
@@ -94,6 +93,7 @@ if (new_interest > current_interest) or (extension > 0):
 st.header("Value of My One-off Early Repayment")
 
 repayment = st.slider('How much extra are you willing to pay today?', 0,round(Remaining*0.2),0,100, format="£%d")
+if repayment > 0: repayment_text = f" and after making a single repayment of £{repayment:,} today,"
 
 value = early_repayment_value(Remaining,repayment, new_monthly_payment,new_interest)
 new_term = number_years(Remaining-repayment,new_monthly_payment,new_interest)
@@ -101,4 +101,4 @@ new_term = number_years(Remaining-repayment,new_monthly_payment,new_interest)
 if repayment > 0:
     st.subheader(f'If you repay an extra £{round(repayment):,} now, you will pay £{round(value):,} less over {new_term} years at {new_interest}% interest.')
     
-st.write("Copyright 2022 Joseph Bae")
+st.write("Copyright © 2023 Joseph Bae")
