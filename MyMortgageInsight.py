@@ -77,7 +77,7 @@ extension = st.slider('Are you thinking of extending the term at all?', 0, 15, 0
 extension_text = ""
 if extension > 0: extension_text = f" and extending the term by {extension} years,"
 if repayment > 0: repayment_text = f" and after making a single repayment of £{repayment:,} today,"
-if repayment == 0: new_term = years+extension
+new_term = years+extension
     
 new_monthly_payment = monthly_payment(Remaining - repayment, new_interest,years+extension)
 
