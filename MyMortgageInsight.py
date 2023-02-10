@@ -78,10 +78,15 @@ if extension > 0: extension_text = f" and extending the term by {extension} year
 
 new_monthly_payment = monthly_payment(Remaining, new_interest,years+extension)
 
-st.subheader(f"With a new interest rate of {new_interest}%{extension_text}, your new monthly payment will be £{round(new_monthly_payment):,} over {years+extension} years.")
+st.subheader(f"With a new interest rate of {new_interest}%,{extension_text} your new monthly payment will be £{round(new_monthly_payment):,} over {years+extension} years.")
 
-if new_interest > current_interest:
-    st.subheader(f"This is an increase of £{round(new_monthly_payment - current_monthly_payment):,} every month.")
+if (new_interest > current_interest) or (extension > 0):
+    if new_monthly_payment > current_monthly_payment: 
+        increase_decrease = f"This is an increase of £{round(new_monthly_payment - current_monthly_payment):,} every month."
+    elif new_monthly_payment < current_monthly_payment: 
+        increase_decrease = f"This is an decrease of £{round(-new_monthly_payment + current_monthly_payment):,} every month."
+    else: increase_decrease = "There is no change in your monthly payment."
+    st.subheader(increase_decrease)
 
 st.header("Value of My One-off Early Repayment")
 
