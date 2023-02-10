@@ -59,9 +59,9 @@ st.title("My Mortgage Insight")
 
 st.header("Tell us about your current Mortgage:")
 
-current_monthly_payment = st.slider('How much are you paying every month?', 300, 6000, 2023, format="£%d")
+current_monthly_payment = st.slider('How much are you paying every month?', 300, 6000, 2023,10, format="£%d")
 years = st.slider('How many years do you have left on your mortgage?', 7, 35, 21, format="%d years")
-current_interest = st.slider('What interest rate are you on now?', 0.5, 9.0, 1.9, format="%f%%")
+current_interest = st.slider('What interest rate are you on now?', 0.5, 9.0, 1.9,0.1, format="%f%%")
 
 Remaining = PV_implicit(current_monthly_payment, current_interest,years)
 
@@ -70,7 +70,7 @@ st.subheader(f"Based on what you have told us, you still have £{round(Remaining
 
 st.header("My Future Mortgage")
 
-new_interest = st.slider('What new interest rate are you considering?', 0.1, 9.0, current_interest, format="%f%%")
+new_interest = st.slider('What new interest rate are you considering?', 0.1, 9.0, current_interest,0.1, format="%f%%")
 
 new_monthly_payment = monthly_payment(Remaining, new_interest,years)
 
@@ -81,7 +81,7 @@ if new_interest > current_interest:
 
 st.header("Value of My One-off Early Repayment")
 
-repayment = st.slider('How much extra are you willing to pay today?', 0,round(Remaining*0.2),0, format="£%d")
+repayment = st.slider('How much extra are you willing to pay today?', 0,round(Remaining*0.2),0,100, format="£%d")
 
 value = early_repayment_value(Remaining,repayment, new_monthly_payment,new_interest)
 new_term = number_years(Remaining-repayment,new_monthly_payment,new_interest)
