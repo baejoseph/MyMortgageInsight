@@ -74,13 +74,13 @@ st.header("My Future Mortgage")
 new_interest = st.slider('What new interest rate are you considering?', 0.1, 9.0, current_interest,0.1, format="%f%%")
 
 extension = st.slider('Are you thinking of extending the term at all?', 0, 15, 0, format="%d years")
-extension_text,repayment_text = "",""
+extension_text = ""
 if extension > 0: extension_text = f" and extending the term by {extension} years,"
 
 new_term = years+extension   
 new_monthly_payment = monthly_payment(Remaining, new_interest,years+extension)
 
-st.subheader(f"With a new interest rate of {new_interest}%,{extension_text}{repayment_text} your new monthly payment will be £{round(new_monthly_payment):,} over {new_term} years.")
+st.subheader(f"With a new interest rate of {new_interest}%,{extension_text} your new monthly payment will be £{round(new_monthly_payment):,} over {new_term} years.")
 
 if (new_interest > current_interest) or (extension > 0):
     if new_monthly_payment > current_monthly_payment: 
@@ -93,12 +93,16 @@ if (new_interest > current_interest) or (extension > 0):
 st.header("Value of My One-off Early Repayment")
 
 repayment = st.slider('How much extra are you willing to pay today?', 0,round(Remaining*0.2),0,100, format="£%d")
-if repayment > 0: repayment_text = f" and after making a single repayment of £{repayment:,} today,"
 
+# value of repayment if reducing terms
 value = early_repayment_value(Remaining,repayment, new_monthly_payment,new_interest)
 new_term = number_years(Remaining-repayment,new_monthly_payment,new_interest)
 
+# value of repayment if reducing monthly payment
+updated_monthly_payment = monthly_payment(Remaining - repayment, new_interest,years+extension)
+value2 = (new_monthly_payment- updated_monthly_payment)*12*(years+extension)
+
 if repayment > 0:
-    st.subheader(f'If you repay an extra £{round(repayment):,} now, you will pay £{round(value):,} less over {new_term} years at {new_interest}% interest.')
+    st.subheader(f'If you repay an extra £{round(repayment):,} now, you will either shorten the term by {round(years+extension-new_term,1)} and pay £{round(value):,} less over {new_term} years at {new_interest}% interest; or reduce monthly payment by £{round(new_monthly_payment- updated_monthly_payment,0)} and pay £{round(value2):,} less over {years+extension} years at {new_interest}% interest.')
     
 st.write("Copyright © 2023 Joseph Bae")
