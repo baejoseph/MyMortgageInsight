@@ -84,7 +84,7 @@ if (new_interest > current_interest) or (extension > 0):
     if new_monthly_payment > current_monthly_payment: 
         increase_decrease = f"This is an increase of £{round(new_monthly_payment - current_monthly_payment):,} every month."
     elif new_monthly_payment < current_monthly_payment: 
-        increase_decrease = f"This is an decrease of £{round(-new_monthly_payment + current_monthly_payment):,} every month."
+        increase_decrease = f"This is a decrease of £{round(-new_monthly_payment + current_monthly_payment):,} every month."
     else: increase_decrease = "There is no change in your monthly payment."
     st.subheader(increase_decrease)
 
