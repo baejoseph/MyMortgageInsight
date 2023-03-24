@@ -72,7 +72,7 @@ st.title("My Mortgage Insight")
 st.header("Tell us about your current Mortgage:")
 
 current_monthly_payment = st.slider('How much are you paying every month?', 700, 6000, 2020,10, format="£%d")
-years = st.slider('How many years do you have left on your mortgage?', 10, 35, 21, format="%d years")
+years = st.slider('How many years do you have left on your mortgage?', 13, 35, 21, format="%d years")
 current_interest = st.slider('What interest rate are you on now?', 0.5, 9.0, 1.9,0.1, format="%f%%")
 
 Remaining = PV_implicit(current_monthly_payment, current_interest,years)
