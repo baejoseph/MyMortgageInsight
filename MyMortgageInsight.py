@@ -2,6 +2,9 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+from streamlit_extras.buy_me_a_coffee import button
+from streamlit_extras.add_vertical_space import add_vertical_space
+
 def monthly_payment(PV,interest,years):
     for payment in range(60,800,1):
         ePV = 1e5
@@ -69,7 +72,7 @@ def years_months_text(yr):
 
 st.title("My Mortgage Insight")
 
-st.header("Tell us about your current Mortgage:")
+st.header("Your Current Mortgage")
 
 current_monthly_payment = st.slider('How much are you paying every month?', 700, 6000, 2020,10, format="£%d")
 years = st.slider('How many years do you have left on your mortgage?', 13, 35, 21, format="%d years")
@@ -80,6 +83,8 @@ repayment = 0
 
 st.subheader(f"You are currently paying £{round(current_monthly_payment):,} at {current_interest}% interest over {years} years.")
 st.subheader(f"Based on what you have said, you still have £{round(Remaining):,} to pay over {years} years.")
+
+add_vertical_space(5)
 
 st.header("My Future Mortgage")
 
@@ -101,6 +106,8 @@ if (new_interest > current_interest) or (extension > 0):
     else: increase_decrease = "There is no change in your monthly payment."
     st.subheader(increase_decrease)
 
+add_vertical_space(5)
+    
 st.header("Value of My One-off Early Repayment")
 
 repayment = st.slider('How much extra are you willing to pay today?', 0,round(Remaining*0.2),0,100, format="£%d")
@@ -116,4 +123,10 @@ value2 = (new_monthly_payment- updated_monthly_payment)*12*(years+extension)
 if repayment > 0:
     st.subheader(f'If you repay an extra £{round(repayment):,} now, you can either shorten the term by {years_months_text(years+extension-new_term)} and pay £{round(value):,} less over {years_months_text(new_term)} at {new_interest}% interest; or reduce monthly payment by £{round(new_monthly_payment- updated_monthly_payment)} and pay £{round(value2):,} less over {years_months_text(years+extension)} at {new_interest}% interest.')
     
+
+add_vertical_space(10)
+
 st.write("Copyright © 2023 Joseph Bae")
+
+button(username="baejoseph", floating=False, width=221)
+
