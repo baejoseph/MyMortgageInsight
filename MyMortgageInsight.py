@@ -1,12 +1,15 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
+from typing import Literal
 
 def add_vertical_space(num_lines: int = 1):
     """Add vertical space to your Streamlit app."""
     for _ in range(num_lines):
         st.write("")
 
+Font = Literal['Cookie', 'Lato', 'Arial', 'Comic', 'Inter', 'Bree', 'Poppins']
+        
 def button(
     username: str,
     floating: bool = True,
