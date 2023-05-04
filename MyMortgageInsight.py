@@ -121,7 +121,7 @@ def years_months_text(yr):
 
 st.title("My Mortgage Insight")
 
-st.header("Your Current Mortgage")
+st.header("My Current Mortgage")
 
 current_monthly_payment = st.slider('How much are you paying every month?', 700, 6000, 2020,10, format="£%d")
 years = st.slider('How many years do you have left on your mortgage?', 13, 35, 21, format="%d years")
