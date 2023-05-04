@@ -2,7 +2,10 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from streamlit_extras.add_vertical_space import add_vertical_space
+def add_vertical_space(num_lines: int = 1):
+    """Add vertical space to your Streamlit app."""
+    for _ in range(num_lines):
+        st.write("")
 
 def button(
     username: str,
