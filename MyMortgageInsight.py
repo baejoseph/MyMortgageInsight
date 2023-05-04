@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from typing import Literal
+from streamlit.components.v1 import html
 
 def add_vertical_space(num_lines: int = 1):
     """Add vertical space to your Streamlit app."""
