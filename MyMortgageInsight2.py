@@ -135,7 +135,7 @@ mp4 = MortgageProduct(**params4)
 value2 = (new_pmt - mp4.get_pmt())*12*new_term
 
 if repayment > 0:
-    st.subheader(f'If you repay an extra £{round(repayment):,} now, you can either shorten the term by {years_months_text(new_term - mp3.get_term())} and pay £{round(value):,} less over {years_months_text(new_term)} at {new_rate}% interest; or reduce monthly payment by £{round(new_pmt - mp4.get_pmt())} and pay £{round(value2):,} less over {years_months_text(new_term)} at {new_rate}% interest.')
+    st.subheader(f'If you repay an extra £{round(repayment):,} now, you can either shorten the term by {years_months_text(new_term - mp3.get_term())} and pay £{round(value):,} less over {years_months_text(mp3.get_term())} at {new_rate}% interest; or reduce monthly payment by £{round(new_pmt - mp4.get_pmt())} and pay £{round(value2):,} less over {years_months_text(new_term)} at {new_rate}% interest.')
 
 add_vertical_space(10)
 
