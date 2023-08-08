@@ -69,7 +69,7 @@ st.title("My Mortgage Insight")
 
 st.header("My Current Mortgage")
 
-current_pmt = st.slider('How much are you paying every month?', 250, 3500, 1420,10, format="£%d")
+current_pmt = st.slider('How much are you paying every month?', 250, 5500, 1420,10, format="£%d")
 current_term = st.slider('How many years do you have left on your mortgage?', 7, 35, 21, format="%d years")
 current_rate = st.slider('What interest rate are you on now?', 0.5, 9.0, 1.9,0.1, format="%f%%")
 
